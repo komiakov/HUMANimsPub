@@ -4,9 +4,6 @@
         disabled: Boolean,
         icon: String,
     });
-
-    const { label, disabled, icon } = toRefs(props)
-
     function handleClick(event) {
         if (props.disabled) {
             event.preventDefault();
@@ -17,9 +14,7 @@
 
 <template>
     <button class="hmnButton" :class="{ disabled }" :disabled="disabled" @click="handleClick">
-        <ClientOnly>
-            <UiComponentsHmnIcon :name="icon" :size="18" v-if="icon" />
-        </ClientOnly>  
+        <UiComponentsHmnIcon :name="icon" size="18" v-if="icon" />
         <span class="hmnButtonLabel" v-if="label">{{ label }}</span>
     </button>
 </template>
